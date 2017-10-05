@@ -1,15 +1,11 @@
 
 # Jassitant_new
 
-### author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
+author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
 
-### assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
+assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
 
-### company : 
-
-          株式会社リーディングソフト http://www.leadingsoft.co.jp/
-          
-          南京联迪信息系统股份有限公司 http://www.liandisys.com.cn/
+company : 株式会社リーディングソフト http://www.leadingsoft.co.jp/         南京联迪信息系统股份有限公司 http://www.liandisys.com.cn/
 
 -------------------------------------------------------------------------------------------------
 what is new?
@@ -27,9 +23,9 @@ You are welcome.
 
 ## Jassitant
 
-### author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
+author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
 
-### assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
+assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
 
 A free open-source DB tool implemented with jdbc for oracle/db2/postgres/mysql/sybase and etc.
 
