@@ -253,7 +253,7 @@ public class ResourceManager {
 		UIManager.put("ToolBar.font", defaultPlusFontResource);
 		UIManager.put("TextPane.font", defaultPlusFontResource);
 
-		UIManager.put("OptionPaneUI", "org.jas.base.PJBasicOptionPaneUI");
+		UIManager.put("OptionPaneUI", "ldjp.jassistant.base.PJBasicOptionPaneUI");
 
         ListCellRenderer<?> defaultListRender = (ListCellRenderer<?>) (UIManager
                 .get("List.cellRenderer"));
