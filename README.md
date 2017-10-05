@@ -12,17 +12,21 @@ company :
 南京联迪信息系统股份有限公司 http://www.liandisys.com.cn/
 
 -------------------------------------------------------------------------------------------------
-what is new?
 
 reconstructed from jassistant as a maven project
+
 some bugs had been modified
+
 add function which can import data from excel files (only exported by this tool) to database  
 
 -------------------------------------------------------------------------------------------------
-Welcome to join us
+
+### Welcome to join us
 
 Everyone interested in this project can join us.
+
 You are welcome.
+
 -------------------------------------------------------------------------------------------------
 
 ## Jassitant
