@@ -1,13 +1,15 @@
 
 # Jassitant_new
 
-author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
+### author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
 
-assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
+### assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
 
-company : 株式会社リーディングソフト  http://www.leadingsoft.co.jp/
+### company : 
 
-          南京联迪信息系统股份有限公司 http://www.liandisys.com.cn/
+          株式会社リーディングソフト http://www.leadingsoft.co.jp/
+          
+          南京联迪信息系统股份有限公司 http://www.liandisys.com.cn/
 
 -------------------------------------------------------------------------------------------------
 what is new?
