@@ -63,7 +63,7 @@ public class DialogOpenConnection extends PJDialogBase implements ParamTransferL
 	JButton btnRemoveConnection = new JButton();
 	JScrollPane scpConnections = new JScrollPane();
 	EncryptListCellRenderer listCellRender = new EncryptListCellRenderer();
-	JList listConnections = new JList();
+	JList<Object> listConnections = new JList<Object>();
 	JLabel lblConnectionName = new JLabel();
 	JLabel lblUserName = new JLabel();
 	JTextField txtUser = new JTextField();
@@ -414,7 +414,7 @@ public class DialogOpenConnection extends PJDialogBase implements ParamTransferL
          */
         private static final long serialVersionUID = 1L;
 
-        public Component getListCellRendererComponent(JList list, Object value,
+        public Component getListCellRendererComponent(JList<?> list, Object value,
                 int index, boolean isSelected, boolean cellHasFocus) {
             JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected,
                     cellHasFocus);

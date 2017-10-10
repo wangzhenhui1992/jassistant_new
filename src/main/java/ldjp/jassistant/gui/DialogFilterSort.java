@@ -62,9 +62,9 @@ public class DialogFilterSort extends PJDialogBase {
 	JScrollPane scpSortOrgColumns = new JScrollPane();
 	JScrollPane scpSortSortedColumns = new JScrollPane();
 	BorderLayout borderLayout5 = new BorderLayout();
-	JList lstSortOrgColumns = new JList();
+	JList<Object> lstSortOrgColumns = new JList<Object>();
 	PJListModel lstSortOrgColumnsModel = new PJListModel();
-	JList lstSortSortedColumns = new JList();
+	JList<Object> lstSortSortedColumns = new JList<Object>();
 	PJListModel lstSortSortedColumnsModel = new PJListModel();
 	JButton btnRemoveSort = new JButton();
 	JButton btnSortASCAdd = new JButton();

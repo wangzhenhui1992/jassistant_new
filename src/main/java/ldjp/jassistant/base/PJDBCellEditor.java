@@ -20,7 +20,7 @@ public class PJDBCellEditor extends DefaultCellEditor {
         super(checkBox);
     }
 
-    public PJDBCellEditor(JComboBox comboBox) {
+    public PJDBCellEditor(JComboBox<Object> comboBox) {
         super(comboBox);
     }
 

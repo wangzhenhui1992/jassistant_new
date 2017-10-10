@@ -8,7 +8,7 @@ import javax.swing.AbstractListModel;
 /**
  * list model for filter and sort
  */
-public class PJListModel extends AbstractListModel {
+public class PJListModel extends AbstractListModel<Object> {
 
     private static final long serialVersionUID = 1L;
 

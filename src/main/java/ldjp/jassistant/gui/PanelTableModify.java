@@ -125,7 +125,7 @@ public class PanelTableModify extends JPanel implements Refreshable, ParamTransf
 	JCheckBox chkShowComment = new JCheckBox(WordManager.getWord(WordKeyConsts.W0263));
 	JTextField txtSearchColumn = new JTextField();
 	RollOverButton btnSearchColumn = new RollOverButton();
-	JComboBox cmbQuickFilter = new JComboBox();
+	JComboBox<Object> cmbQuickFilter = new JComboBox<Object>();
 	JButton btnQuickFilterSearch = new JButton();
 	JButton btnLeftTopCorner = new JButton();
 	JButton btnLeftBottomCorner = new JButton();
@@ -446,10 +446,20 @@ public class PanelTableModify extends JPanel implements Refreshable, ParamTransf
 	void initFilterHistory() {
 	    Vector<String> filterList = filterHistoryMap.get(this.tableName);
 	    if (filterList != null) {
-    	    DefaultComboBoxModel modelQuickFilter = new DefaultComboBoxModel(filterList);
+	    	Vector<Object> filterLst =changeTypeToObject(filterList);
+    	    DefaultComboBoxModel<Object> modelQuickFilter = new DefaultComboBoxModel<Object>(filterLst);
     	    cmbQuickFilter.setModel(modelQuickFilter);
     	    cmbQuickFilter.setSelectedItem(PJConst.EMPTY);
 	    }
+	}
+	
+	private Vector<Object> changeTypeToObject(Vector<String> target){
+		if (target == null) return null;
+		Vector<Object> result =new Vector<Object>();
+		for (String element : target) {
+			result.add(element);
+		}
+		return result;
 	}
 
 	/**g
@@ -594,7 +604,8 @@ public class PanelTableModify extends JPanel implements Refreshable, ParamTransf
         if (!filterList.contains(filter)) {
             filterList.add(0, filter);
         }
-        DefaultComboBoxModel modelQuickFilter = new DefaultComboBoxModel(filterList);
+        Vector<Object> filterLst =changeTypeToObject(filterList);
+        DefaultComboBoxModel<Object> modelQuickFilter = new DefaultComboBoxModel<Object>(filterLst);
         cmbQuickFilter.setModel(modelQuickFilter);
         cmbQuickFilter.setSelectedItem(filter);
 
@@ -1247,7 +1258,7 @@ public class PanelTableModify extends JPanel implements Refreshable, ParamTransf
 		// operators init
 		String[] operators = {"=", "<>", ">", ">=", "<", "<=",
 							"LIKE", "IS NOT NULL", "IS NULL"};
-		JComboBox cmbOperator = new JComboBox(operators);
+		JComboBox<Object> cmbOperator = new JComboBox<Object>(operators);
         String inputValue = (String) MessageManager.showInputDialog(new Object[] {
                 columnName, cmbOperator }, "Filter column");
 
@@ -1286,7 +1297,7 @@ public class PanelTableModify extends JPanel implements Refreshable, ParamTransf
 
 		// operators init
 		String[] operators = {"Update With Input", "Set NULL"};
-		JComboBox cmbOperator = new JComboBox(operators);
+		JComboBox<Object> cmbOperator = new JComboBox<Object>(operators);
         String inputValue = (String) MessageManager.showInputDialog(new Object[] {
                 columnName, cmbOperator }, "Update column");
 

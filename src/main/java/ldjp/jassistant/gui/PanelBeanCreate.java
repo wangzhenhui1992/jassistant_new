@@ -263,7 +263,7 @@ public class PanelBeanCreate extends JPanel implements Refreshable {
 			tblColumnDesc.getColumnModel().getColumn(i).setPreferredWidth(columnWidth[i]);
 		}
 
-		JComboBox cmbClassNames = new JComboBox(columnTypeClassNames);
+		JComboBox<Object> cmbClassNames = new JComboBox<Object>(columnTypeClassNames);
 		cmbClassNames.setEditable(true);
 		tblColumnDesc.getColumn(tableColumnHeaders[COMBOBOX_COLUMN[0]]).setCellEditor(new DefaultCellEditor(cmbClassNames));
 

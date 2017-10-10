@@ -48,7 +48,7 @@ public class DialogFindGridData extends PJDialogBase {
 	BorderLayout borderLayout1 = new BorderLayout();
 	JLabel lblColumn = new JLabel();
 	JScrollPane scpColumnList = new JScrollPane();
-	JList listColumn = new JList();
+	JList<Object> listColumn = new JList<Object>();
 	BorderLayout borderLayout2 = new BorderLayout();
 	JLabel lblValue = new JLabel();
 	JPanel panelValueCenter = new JPanel();
@@ -56,7 +56,7 @@ public class DialogFindGridData extends PJDialogBase {
 	JButton btnAdd = new JButton();
 	JButton btnRemove = new JButton();
 	JScrollPane scpValues = new JScrollPane();
-	JList listValues = new JList();
+	JList<Object> listValues = new JList<Object>();
 	JCheckBox chkCaseInsensive = new JCheckBox();
 	JCheckBox chkPartialMatch = new JCheckBox();
 	JButton btnOK = new JButton();

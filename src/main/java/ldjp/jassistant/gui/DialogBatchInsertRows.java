@@ -60,7 +60,7 @@ public class DialogBatchInsertRows extends PJDialogBase {
 	TitledBorder titledBorderAutoIncrease;
 	BorderLayout borderLayout1 = new BorderLayout();
 	JPanel panelKeySet = new JPanel();
-	JComboBox cmbKeys = new JComboBox();
+	JComboBox<Object> cmbKeys = new JComboBox<Object>();
 	PJEditorTextField txtKeyOrginalValue = new PJEditorTextField(null);
 	PJEditorTextField txtToInsertRows = new PJEditorTextField(Integer.class);
 	JLabel lblKeys = new JLabel();

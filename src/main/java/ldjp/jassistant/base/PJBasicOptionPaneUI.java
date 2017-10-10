@@ -41,7 +41,7 @@ public class PJBasicOptionPaneUI extends BasicOptionPaneUI {
 
                 if (sValues != null) {
                     if (sValues.length < 20) {
-                        JComboBox cBox = new JComboBox();
+                        JComboBox<Object> cBox = new JComboBox<Object>();
 
                         for (int counter = 0, maxCounter = sValues.length; counter < maxCounter; counter++) {
                             cBox.addItem(sValues[counter]);
@@ -52,7 +52,7 @@ public class PJBasicOptionPaneUI extends BasicOptionPaneUI {
                         inputComponent = cBox;
                         toAdd = cBox;
                     } else {
-                        JList list = new JList(sValues);
+                        JList<Object> list = new JList<Object>(sValues);
                         JScrollPane sp = new JScrollPane(list);
 
                         list.setVisibleRowCount(10);

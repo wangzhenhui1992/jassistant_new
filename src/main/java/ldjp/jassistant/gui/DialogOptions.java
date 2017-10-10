@@ -71,7 +71,7 @@ public class DialogOptions extends PJDialogBase implements ParamTransferListener
 	JPanel subTabPanelClassPath = new JPanel();
 	JPanel subTabPanelView = new JPanel();
 	JScrollPane scpClassPathListLeft = new JScrollPane();
-	JList listClassPathListLeft = new JList();
+	JList<Object> listClassPathListLeft = new JList<Object>();
 	PJListModel listClassPathListLeftModel = new PJListModel();
 	JPanel panelClassPathRight = new JPanel();
 	JButton btnAddClassPath = new JButton();

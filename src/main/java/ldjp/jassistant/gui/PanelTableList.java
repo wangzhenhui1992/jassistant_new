@@ -101,16 +101,16 @@ public class PanelTableList extends JPanel implements ParamTransferListener {
     JPanel panelViews = new JPanel();
     JPanel panelNewBeans = new JPanel();
     JPanel panelReport = new JPanel();
-    JList listTableNames = new JList();
+    JList<Object> listTableNames = new JList<Object>();
     JScrollPane scpTableList = new JScrollPane();
     JLabel lblTableCounts = new JLabel();
     JScrollPane scpViewList = new JScrollPane();
     JLabel lblViewCounts = new JLabel();
-    JList lstViewNames = new JList();
+    JList<Object> lstViewNames = new JList<Object>();
     JScrollPane scpNewBeanList = new JScrollPane();
     JLabel lblNewBeanCounts = new JLabel();
-    JList lstNewBeanList = new JList();
-    JList lstReportList = new JList();
+    JList<Object> lstNewBeanList = new JList<Object>();
+    JList<Object> lstReportList = new JList<Object>();
     JLabel lblReportCounts = new JLabel();
     JScrollPane scpReportList = new JScrollPane();
     JPopupMenu reportPopupMenu = new JPopupMenu();
@@ -128,7 +128,7 @@ public class PanelTableList extends JPanel implements ParamTransferListener {
     ImageIcon iconDeleteReport = ImageManager.createImageIcon("delete.gif");
     JPanel panelTop = new JPanel();
     BorderLayout borderLayout1 = new BorderLayout();
-    JComboBox cmbConnectionURL = new JComboBox();
+    JComboBox<Object> cmbConnectionURL = new JComboBox<Object>();
     JToolBar toolBarTablesTop = new JToolBar();
     JToolBar toolBarTablesBottom = new JToolBar();
     RollOverButton btnTablesFilter = new RollOverButton();
@@ -1239,7 +1239,7 @@ public class PanelTableList extends JPanel implements ParamTransferListener {
          */
         private static final long serialVersionUID = 1L;
 
-        public Component getListCellRendererComponent(JList list, Object value,
+        public Component getListCellRendererComponent(JList<?> list, Object value,
                 int index, boolean isSelected, boolean cellHasFocus) {
 
             String noCommentStr = getNoCommentStr((String) value);

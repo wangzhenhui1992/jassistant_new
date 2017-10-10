@@ -40,13 +40,13 @@ public class DialogFontChooser extends PJDialogBase {
     JPanel panelMain = new JPanel();
 	JTextField txtFontName = new JTextField();
 	JScrollPane scpFontName = new JScrollPane();
-	JList listFontName = new JList();
+	JList<Object> listFontName = new JList<Object>();
 	JTextField txtFontStyle = new JTextField();
 	JTextField txtFontSize = new JTextField();
 	JScrollPane scpFontStyle = new JScrollPane();
 	JScrollPane scpFontSize = new JScrollPane();
-	JList listFontStyle = new JList();
-	JList listFontSize = new JList();
+	JList<Object> listFontStyle = new JList<Object>();
+	JList<Object> listFontSize = new JList<Object>();
 	JLabel lblFontName = new JLabel();
 	JLabel lblFontStyle = new JLabel();
 	JLabel lblFontSize = new JLabel();
@@ -297,7 +297,7 @@ public class DialogFontChooser extends PJDialogBase {
 	/**
 	 * set list selected value to textfield
 	 */
-	void setSelectValue(JList list, JTextField txtField) {
+	void setSelectValue(JList<Object> list, JTextField txtField) {
 		Object selectValue = list.getSelectedValue();
 		txtField.setText((String) selectValue);
 

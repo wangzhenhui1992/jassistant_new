@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -55,14 +56,14 @@ public class DialogSelectTableColumns extends PJDialogBase {
 	BorderLayout borderLayoutTable = new BorderLayout();
 	BorderLayout borderLayoutColumn = new BorderLayout();
 	JScrollPane scpSelectTable = new JScrollPane();
-	JList listTableNames = new JList();
+	JList<Object> listTableNames = new JList<Object>();
 	JScrollPane scpSelectColumns = new JScrollPane();
-	JList listColumns = new JList();
-	JComboBox cmbTables = new JComboBox();
+	JList<Object> listColumns = new JList<Object>();
+	JComboBox<Object> cmbTables = new JComboBox<Object>();
 	JPanel panelFunctions = new JPanel();
 	BorderLayout borderLayoutFunctions = new BorderLayout();
 	JScrollPane scpFunctions = new JScrollPane();
-	JList listFunctions = new JList();
+	JList<Object> listFunctions = new JList<Object>();
 	MouseSelectListener mouseSelectListener = new MouseSelectListener();
 
 	public DialogSelectTableColumns(Frame frame, String title, boolean modal) {
@@ -176,21 +177,21 @@ public class DialogSelectTableColumns extends PJDialogBase {
 	 */
 	String getSelectedText() {
 		int selectedIndex = tabbedPaneMain.getSelectedIndex();
-		Object[] values = null;
+		List<Object> values = null;
 
 		if (selectedIndex == 0) {
-			values = listTableNames.getSelectedValues();
+			values = listTableNames.getSelectedValuesList();
 		} else if (selectedIndex == 1) {
-			values = listColumns.getSelectedValues();
+			values = listColumns.getSelectedValuesList();
 		} else if (selectedIndex == 2) {
-			values = listFunctions.getSelectedValues();
+			values = listFunctions.getSelectedValuesList();
 		}
 
 		StringBuffer sb = new StringBuffer("\n");
-		if (values != null && values.length > 0) {
-			for (int i = 0; i < values.length; i++) {
-				sb.append(values[i]);
-				if (i < values.length - 1) {
+		if (values != null && values.isEmpty()) {
+			for (int i = 0,size = values.size(); i < size; i++) {
+				sb.append(values.get(i));
+				if (i < size - 1) {
 					sb.append(",\n");
 				}
 			}

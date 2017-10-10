@@ -53,7 +53,7 @@ public class DialogConfigConnection extends PJDialogBase {
 	JPanel panelCenterRight = new JPanel();
 	BorderLayout borderLayout1 = new BorderLayout();
 	JScrollPane scpConnectionListNames = new JScrollPane();
-	JList lstConnectionNames = new JList();
+	JList<Object> lstConnectionNames = new JList<Object>();
 	JPanel panelCenterMiddle = new JPanel();
 	GridLayout gridLayout1 = new GridLayout();
 	JPanel panelCenterMiddleTop = new JPanel();
@@ -67,9 +67,9 @@ public class DialogConfigConnection extends PJDialogBase {
 	GridLayout gridLayout3 = new GridLayout();
 	JLabel lblConnectionName = new JLabel();
 	JLabel lblDriverName = new JLabel();
-	JComboBox cmbJdbcDriver = new JComboBox();
+	JComboBox<Object> cmbJdbcDriver = new JComboBox<Object>();
 	JLabel lblConnectionURL = new JLabel();
-	JComboBox cmbConnectionURL = new JComboBox();
+	JComboBox<Object> cmbConnectionURL = new JComboBox<Object>();
 	JLabel lblBlank = new JLabel();
 	JPanel panelCenterRightBottom = new JPanel();
 	GridLayout gridLayout4 = new GridLayout();
@@ -316,14 +316,14 @@ public class DialogConfigConnection extends PJDialogBase {
 	 * init connection drivers combobox
 	 */
 	private void initConnectionDrivers() {
-		cmbJdbcDriver.setModel(new DefaultComboBoxModel(connectionDriverSet.toArray()));
+		cmbJdbcDriver.setModel(new DefaultComboBoxModel<Object>(connectionDriverSet.toArray()));
 	}
 
 	/**
 	 * init connection urls combobox
 	 */
 	private void initConnectionURLs() {
-		cmbConnectionURL.setModel(new DefaultComboBoxModel(connectionURLSet.toArray()));
+		cmbConnectionURL.setModel(new DefaultComboBoxModel<Object>(connectionURLSet.toArray()));
 	}
 
 	/**

@@ -9,7 +9,7 @@ import javax.swing.AbstractListModel;
 /**
  * the model for table list
  */
-public class PJTableListModel extends AbstractListModel {
+public class PJTableListModel extends AbstractListModel<Object> {
 
     private static final long serialVersionUID = 1L;
 
