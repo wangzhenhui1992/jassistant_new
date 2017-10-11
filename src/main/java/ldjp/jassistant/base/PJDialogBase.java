@@ -89,18 +89,18 @@ public class PJDialogBase extends JDialog {
         if (allComponents == null) {
             return;
         }
-        for (int i = 0; i < allComponents.length; i++) {
-            if (allComponents[i] instanceof javax.swing.JTextField ||
-                    allComponents[i] instanceof javax.swing.JTextArea ||
-                    allComponents[i] instanceof javax.swing.JTable ||
-                    allComponents[i] instanceof javax.swing.JComboBox ||
-                    allComponents[i] instanceof javax.swing.JRadioButton ||
-                    allComponents[i] instanceof javax.swing.JCheckBox ||
-                    allComponents[i] instanceof javax.swing.JPasswordField) {
-                allComponents[i].addFocusListener(new DefaultButtonFocusAction(
-                        (JComponent) allComponents[i]));
-            } else if (allComponents[i] instanceof java.awt.Container) {
-                addDefaultButtonAction((Container) allComponents[i]);
+        for (Component c : allComponents) {
+            if (c instanceof javax.swing.JTextField ||
+            		c instanceof javax.swing.JTextArea ||
+            		c instanceof javax.swing.JTable ||
+            		c instanceof javax.swing.JComboBox ||
+            		c instanceof javax.swing.JRadioButton ||
+            		c instanceof javax.swing.JCheckBox ||
+            		c instanceof javax.swing.JPasswordField) {
+                c.addFocusListener(new DefaultButtonFocusAction(
+                        (JComponent) c));
+            } else if (c instanceof java.awt.Container) {
+                addDefaultButtonAction((Container) c);
             }
         }
 

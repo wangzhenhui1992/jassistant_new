@@ -126,7 +126,7 @@ public class DBTableModel extends AbstractTableModel {
      * set cell editor
      */
     public void setCellEditor(CellEditorListener cellEditorListener) {
-        for (int i = 0; i < getColumnCount(); i++) {
+        for (int i = 0,size = getColumnCount(); i <size ; i++) {
             int col = getRealColumnIndex(i);
             PJEditorTextField editorComp = new PJEditorTextField(getColumnJavaType(col));
             editorComp.setBorder(null);
@@ -141,8 +141,7 @@ public class DBTableModel extends AbstractTableModel {
      */
     private void initShowColumnFlags() {
         showColumnFlags = new boolean[data.getClmNms().size()];
-
-        for (int i = 0; i < showColumnFlags.length; i++) {
+        for (int i = 0,length = showColumnFlags.length; i < length; i++) {
             showColumnFlags[i] = true;
         }
     }
@@ -152,7 +151,7 @@ public class DBTableModel extends AbstractTableModel {
      */
     public int getRealColumnIndex(int col) {
         int count = -1;
-        for (int i = 0; i < showColumnFlags.length; i++) {
+        for (int i = 0,length = showColumnFlags.length; i < length ; i++) {
             if (!showColumnFlags[i]) {
                 continue;
             }
@@ -169,7 +168,7 @@ public class DBTableModel extends AbstractTableModel {
      */
     private int getShowColumnIndex(int realCol) {
         int count = -1;
-        for (int i = 0; i < showColumnFlags.length; i++) {
+        for (int i = 0 , length = showColumnFlags.length; i < length ; i++) {
             if (!showColumnFlags[i]) {
                 continue;
             }
@@ -191,8 +190,8 @@ public class DBTableModel extends AbstractTableModel {
         }
 
         int count = 0;
-        for (int i = 0; i < showColumnFlags.length; i++) {
-            if (!showColumnFlags[i]) {
+        for (boolean flg : showColumnFlags) {
+            if (!flg) {
                 continue;
             }
             count++;
@@ -224,7 +223,7 @@ public class DBTableModel extends AbstractTableModel {
     public int findRowData(Vector<String[]> valueVector, int beginIndex,
             boolean isCaseSensitive, boolean isPartial) {
         while (beginIndex < getRowCount()) {
-            for (int i = 0; i < valueVector.size(); i++) {
+            for (int i = 0,size = valueVector.size(); i <size ; i++) {
                 boolean thisFind = false;
                 String[] oneCond = (String[]) valueVector.get(i);
 
@@ -249,7 +248,7 @@ public class DBTableModel extends AbstractTableModel {
                 }
 
                 if (thisFind) {
-                    if (i == valueVector.size() - 1) {
+                    if (i == size - 1) {
                         return beginIndex;
                     } else {
                         continue;
@@ -478,16 +477,16 @@ public class DBTableModel extends AbstractTableModel {
         Vector<Class<?>> typeVector = data.getTypes();
         Vector<Integer> sizeVector = data.getSizes();
 
-        for (int i = 0; i < sizeVector.size(); i++) {
-            String name = getColumnName(i);
-            Class<?> type = typeVector.get(i);
-            int displaySize = sizeVector.get(i).intValue();
+		for (int i = 0, size = sizeVector.size(); i < size; i++) {
+			String name = getColumnName(i);
+			Class<?> type = typeVector.get(i);
+			int displaySize = sizeVector.get(i).intValue();
 
-            if (!showColumnFlags[i]) {
-                continue;
-            }
-            restoreColumnWidth(i, displaySize, name, type);
-        }
+			if (!showColumnFlags[i]) {
+				continue;
+			}
+			restoreColumnWidth(i, displaySize, name, type);
+		}
 
         table.repaint();
     }

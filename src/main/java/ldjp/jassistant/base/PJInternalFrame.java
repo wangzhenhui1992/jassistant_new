@@ -100,9 +100,9 @@ public class PJInternalFrame extends JInternalFrame implements ActionListener,
     JMenuItem findMenuItem(String title) {
         if (windowMenu != null) {
             Component[] items = windowMenu.getMenuComponents();
-            for (int i = 0; i < items.length; i++) {
-                if (items[i] instanceof JRadioButtonMenuItem) {
-                    JRadioButtonMenuItem oneItem = (JRadioButtonMenuItem) items[i];
+            for (Component c : items) {
+                if (c instanceof JRadioButtonMenuItem) {
+                    JRadioButtonMenuItem oneItem = (JRadioButtonMenuItem) c;
                     if (oneItem.getText().equals(title)) {
                         return oneItem;
                     }

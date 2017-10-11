@@ -42,10 +42,9 @@ public class PJBasicOptionPaneUI extends BasicOptionPaneUI {
                 if (sValues != null) {
                     if (sValues.length < 20) {
                         JComboBox<Object> cBox = new JComboBox<Object>();
-
-                        for (int counter = 0, maxCounter = sValues.length; counter < maxCounter; counter++) {
-                            cBox.addItem(sValues[counter]);
-                        }
+						for (Object o : sValues) {
+							cBox.addItem(o);
+						}
                         if (inputValue != null) {
                             cBox.setSelectedItem(inputValue);
                         }

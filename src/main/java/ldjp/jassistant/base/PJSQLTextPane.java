@@ -314,7 +314,7 @@ public class PJSQLTextPane extends JTextPane {
      *  Replacement for parameters
      */
     public void replaceParams(String[] params) {
-        for (int i = 0; i < params.length; i++) {
+        for (int i = 0,length = params.length; i <length ; i++) {
             String tmp = params[i];
             int startPos = tmp.lastIndexOf('(');
             int endPos = tmp.lastIndexOf(')');
@@ -477,7 +477,7 @@ public class PJSQLTextPane extends JTextPane {
             int wordBegin = -1;
             int wordEnd = -1;
 
-            for (int i = 0; i < s.length(); i++) {
+            for (int i = 0,length = s.length(); i < length; i++) {
                 char curChar = s.charAt(i);
 
                 if (curChar == '-'
@@ -543,19 +543,18 @@ public class PJSQLTextPane extends JTextPane {
      * check the word is a sql92 keyword
      */
     boolean isSQL92Keyword(String word) {
-        for (int i = 0; i < PJConst.SQL92_KEYWORDS.length; i++) {
-            if (PJConst.SQL92_KEYWORDS[i].equalsIgnoreCase(word)) {
+        for (String element : PJConst.SQL92_KEYWORDS) {
+            if (element.equalsIgnoreCase(word)) {
                 return true;
             }
         }
-
         return false;
     }
 
     boolean isTableName(String word) {
         if (tableNames != null) {
-            for (int i = 0; i < tableNames.length; i++) {
-                if (tableNames[i].equalsIgnoreCase(word)) {
+            for (String element : tableNames) {
+                if (element.equalsIgnoreCase(word)) {
                     return true;
                 }
             }
