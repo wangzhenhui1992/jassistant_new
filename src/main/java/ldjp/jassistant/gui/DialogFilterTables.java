@@ -148,10 +148,10 @@ public class DialogFilterTables extends PJDialogBase {
 
 		Component[] compos = panelTableList.getComponents();
 		HashMap<String,String> hideItems = new HashMap<String,String>();
-		for (int i = 0; i < compos.length; i++) {
-			if (compos[i] instanceof JCheckBox) {
-				if (!((JCheckBox) compos[i]).isSelected()) {
-					hideItems.put(((JCheckBox) compos[i]).getText(), PJConst.EMPTY);
+		for (Component c : compos) {
+			if (c instanceof JCheckBox) {
+				if (!((JCheckBox) c).isSelected()) {
+					hideItems.put(((JCheckBox) c).getText(), PJConst.EMPTY);
 				}
 			}
 		}
@@ -171,12 +171,12 @@ public class DialogFilterTables extends PJDialogBase {
 	 */
 	void chkSelectAll_itemStateChanged(ItemEvent e) {
 		Component[] compos = panelTableList.getComponents();
-		for (int i = 0; i < compos.length; i++) {
-			if (compos[i] instanceof JCheckBox) {
+		for (Component c : compos) {
+			if (c instanceof JCheckBox) {
 				if (chkSelectAll.isSelected()) {
-					((JCheckBox) compos[i]).setSelected(true);
+					((JCheckBox) c).setSelected(true);
 				} else {
-					((JCheckBox) compos[i]).setSelected(false);
+					((JCheckBox) c).setSelected(false);
 				}
 			}
 		}

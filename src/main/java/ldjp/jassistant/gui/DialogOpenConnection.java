@@ -299,7 +299,7 @@ public class DialogOpenConnection extends PJDialogBase implements ParamTransferL
 	 * add new connections to config file
 	 */
 	private void processAddConnections(String url) {
-		for (int i = 0; i < preConnections.size(); i++) {
+		for (int i = 0, size = preConnections.size(); i < size; i++) {
 			String preURL = (String) preConnections.get(i);
 			if (url.equalsIgnoreCase(preURL)) {
 				preConnections.remove(i);
@@ -316,8 +316,8 @@ public class DialogOpenConnection extends PJDialogBase implements ParamTransferL
 
 	private void processUpdateConnections() {
 		PropertyManager.removeProperty(PJConst.DATABASE_CONNECTIONS, true);
-		for (int i = 0; i < preConnections.size(); i++) {
-			String oneURL = (String) preConnections.get(i);
+		for (int i = 0 ,size = preConnections.size(); i < size; i++) {
+			String oneURL =  preConnections.get(i);
 			PropertyManager.setProperty(PJConst.DATABASE_CONNECTIONS +"[" + i + "]", oneURL);
 		}
 	}

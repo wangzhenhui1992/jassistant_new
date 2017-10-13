@@ -277,7 +277,7 @@ public class DialogBatchInsertRows extends PJDialogBase {
 		keyValueVector = new Vector<Object>();
 		keyValueVector.add(null);
 
-		for (int i = 0; i < nameVector.size(); i++) {
+		for (int i = 0,size = nameVector.size(); i < size; i++) {
 			if (((Boolean) keyVector.get(i)).booleanValue()) {
 				cmbKeys.addItem(nameVector.get(i));
 				keyTypeVector.add(typeVector.get(i));
@@ -341,8 +341,8 @@ public class DialogBatchInsertRows extends PJDialogBase {
 	 */
 	boolean isImportedKey(String keyName) {
 		if (importedKeyVector != null && !importedKeyVector.isEmpty()) {
-			for (int i = 0; i < importedKeyVector.size(); i++) {
-				String oneKey =  ((Vector<String>) importedKeyVector.get(i)).get(0);
+			for (int i = 0 , size = importedKeyVector.size(); i < size ; i++) {
+				String oneKey =  importedKeyVector.get(i).get(0);
 				if (oneKey.equals(keyName)) {
 					return true;
 				}

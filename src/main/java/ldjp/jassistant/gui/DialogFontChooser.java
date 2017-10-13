@@ -181,8 +181,8 @@ public class DialogFontChooser extends PJDialogBase {
 		HashSet<String> fontSet = new HashSet<String>();
 		Vector<String> listData = new Vector<String>();
 
-		for (int i = 0; i < fonts.length; i++) {
-			String fontFamily = fonts[i].getFamily();
+		for (Font font : fonts) {
+			String fontFamily = font.getFamily();
 			int sepPos = 0;
 			if ((sepPos = fontFamily.lastIndexOf(".")) > 0) {
 				fontFamily = fontFamily.substring(0, sepPos);

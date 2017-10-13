@@ -295,7 +295,7 @@ public class DialogImportXlsxData extends PJDialogBase {
                             if (CollectionUtils.isEmpty(rowData)) continue;
                             Vector<Object> rowDataTrans = new Vector<Object>();
                             Vector<Object> keyColVals = new Vector<Object>();
-                            for (int ii=0;ii<rowData.size();ii++) {
+                            for (int ii=0,size = rowData.size();ii<size;ii++) {
                                 Object colVal = StringUtil.getConvertValueOfType(columnTps.get(ii), rowData.get(ii));
                                 rowDataTrans.add(colVal);
                                 if (keyColumNms.get(ii))

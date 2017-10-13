@@ -139,10 +139,8 @@ public class DialogHelp extends JFrame {
 		if (!isInit) {
 			try {
 				ArrayList<String> orgContentList = FileManager.readInputStream(PJConst.HELP_CONTENT, "GBK");
-
-				for (int i = 0; i < orgContentList.size(); i++) {
-					String oneContent = (String) orgContentList.get(i);
-
+				
+				orgContentList.forEach((oneContent)->{
 					int firstSep = oneContent.indexOf("=");
 					int secondSep = oneContent.indexOf("=", firstSep + 1);
 					int thirdSep = oneContent.indexOf("=", secondSep + 1);
@@ -151,7 +149,7 @@ public class DialogHelp extends JFrame {
 					showNameList.add(oneContent.substring(firstSep + 1, secondSep));
 					iconList.add(oneContent.substring(secondSep + 1, thirdSep));
 					contentList.add(oneContent.substring(thirdSep + 1));
-				}
+				});
 				isInit = true;
 			} catch (IOException e) {
 				MessageManager.showMessage("MCSTC002E", e.getMessage());

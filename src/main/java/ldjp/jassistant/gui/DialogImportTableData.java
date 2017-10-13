@@ -233,9 +233,7 @@ public class DialogImportTableData extends PJDialogBase {
         }
 
         ArrayList<String> lines = StringUtil.getListFromString(content, "\n");
-        for (int i = 0; i < lines.size(); i++) {
-            String oneLine = lines.get(i);
-
+        for (String oneLine : lines) {
             if (!rdoFormatSQL.isSelected()) {
                 ArrayList<String> oneRow = StringUtil.getListFromString(oneLine, sep);
                 rowDatas.add(oneRow);
@@ -318,9 +316,9 @@ public class DialogImportTableData extends PJDialogBase {
                 }
                 // convert selected types
                 selectedTypes = new Vector<Class<?>>(selectedColumns.size());
-                for (int ii = 0; ii < selectedColumns.size(); ii++) {
+                for (int ii = 0,sizeI = selectedColumns.size(); ii < sizeI; ii++) {
                     int orgIndex = -1;
-                    for (int jj = 0; jj < columnName.size(); jj++) {
+                    for (int jj = 0 ,sizeJ = columnName.size(); jj < sizeJ; jj++) {
                         String oneName = (String) columnName.get(jj);
 
                         if (oneName.equalsIgnoreCase((String) selectedColumns.get(ii))) {
@@ -340,7 +338,7 @@ public class DialogImportTableData extends PJDialogBase {
             }
 
             try {
-                for (; i < rowDatas.size(); i++) {
+                for (int limit = rowDatas.size(); i < limit; i++) {
                     if (shouldBreak) {
                         return;
                     }
@@ -358,7 +356,7 @@ public class DialogImportTableData extends PJDialogBase {
                                 continue;
                             }
 
-                            for (int j = 0; j < oneRow.size(); j++) {
+                            for (int j = 0,size = oneRow.size(); j < size; j++) {
                                 Object columnValue = oneRow.get(j);
                                 Class<?> type = selectedTypes.get(j);
 

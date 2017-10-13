@@ -260,8 +260,8 @@ public class DialogConfigConnection extends PJDialogBase {
         ArrayList<String> connectionNameDriverURLLists = PropertyManager.getProperty(
                 PJConst.DATABASE_NAMES, true, true);
 
-        for (int i = 0; i < connectionNameDriverURLLists.size(); i++) {
-            String oneConnection = (String) connectionNameDriverURLLists.get(i);
+        for (int i = 0 ,size = connectionNameDriverURLLists.size(); i < size; i++) {
+            String oneConnection = connectionNameDriverURLLists.get(i);
             String connectionName = PJConst.EMPTY;
             String connectionDriver = PJConst.EMPTY;
             String connectionURL = PJConst.EMPTY;
@@ -288,11 +288,11 @@ public class DialogConfigConnection extends PJDialogBase {
             }
         }
 
-        for (int i = 0; i < PJConst.DEFAULT_DATABASE_DRIVER.length; i++) {
+        for (int i = 0 , size = PJConst.DEFAULT_DATABASE_DRIVER.length; i < size; i++) {
             connectionDriverSet.add(PJConst.DEFAULT_DATABASE_DRIVER[i]);
         }
 
-        for (int i = 0; i < PJConst.DEFAULT_DATABASE_URL.length; i++) {
+        for (int i = 0 , size = PJConst.DEFAULT_DATABASE_URL.length; i < size; i++) {
             connectionURLSet.add(PJConst.DEFAULT_DATABASE_URL[i]);
         }
 
@@ -464,7 +464,7 @@ public class DialogConfigConnection extends PJDialogBase {
 	 */
 	private void processUpdateConnectionNames() {
 		PropertyManager.removeProperty(PJConst.DATABASE_NAMES, true);
-		for (int i=0; i<connectionNameLists.size(); i++) {
+		for (int i=0 , size = connectionNameLists.size(); i< size; i++) {
 			String connectionName = (String) connectionNameLists.get(i);
 			String[] connectionDriverURLs = (String[]) connectionNameMap.get(connectionName);
 			if (connectionDriverURLs != null && connectionDriverURLs.length > 1) {

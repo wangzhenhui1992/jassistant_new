@@ -313,7 +313,7 @@ public class DialogSaveTableData extends PJDialogBase {
 				}
 
 				int totalTableWidth = 0;
-				for (int i = 0; i < sizeVector.size(); i++) {
+				for (int i = 0 , size = sizeVector.size(); i < size; i++) {
                     totalTableWidth += StringUtil.getTDWidthSize(typeVector.get(i),
                             sizeVector.get(i).intValue());
 				}

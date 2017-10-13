@@ -363,16 +363,16 @@ public class DialogFilterSort extends PJDialogBase {
 
 		// filter columns combobox init
 		cmbColumns.addItem(PJConst.EMPTY);
-		for (int i = 0; i < columns.size(); i++) {
-			cmbColumns.addItem(columns.get(i));
-		}
+		columns.forEach((col)->{
+			cmbColumns.addItem(col);
+		});
 
 		// operators init
 		String[] operators = {"=", "<>", ">", ">=", "<", "<=",
 							"LIKE", "BETWEEN", "IS NOT NULL", "IS NULL"};
 		cmbOperator.addItem(PJConst.EMPTY);
-		for (int i = 0; i < operators.length; i++) {
-			cmbOperator.addItem(operators[i]);
+		for (String operator : operators) {
+			cmbOperator.addItem(operator);
 		}
 
 		// init filter value
@@ -598,7 +598,7 @@ public class DialogFilterSort extends PJDialogBase {
 	int getOrgColumnIndex(String orgColumn) {
 		int orgColumnIndex = orginalVector.indexOf(orgColumn);
 
-		for (int i = orgColumnIndex + 1; i < orginalVector.size(); i++) {
+		for (int i = orgColumnIndex + 1,size = orginalVector.size(); i < size; i++) {
 			int insertIndex = lstSortOrgColumnsModel.indexOf(orginalVector.get(i));
 			if (insertIndex >= 0) {
 				return insertIndex;

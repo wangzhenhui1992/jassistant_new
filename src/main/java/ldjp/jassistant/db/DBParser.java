@@ -300,25 +300,12 @@ public class DBParser {
             if (typeClass != Object.class) {
                 precision = rsmd.getPrecision(i + 1);
             }
-            if (precision > 0) {
-                sizeVector.add(new Integer(precision));
-            } else {
-                sizeVector.add(new Integer(displaySize));
-            }
+            sizeVector.add(precision > 0?new Integer(precision):new Integer(displaySize));
             // convert kyemap column name to column index
-            if (keyMap != null) {
-                if (keyMap.isEmpty() || keyMap.get(columnName.toUpperCase()) != null) {
-                    if (typeClass != java.lang.Object.class) {
-                        keyVector.add(new Boolean(true));
-                    } else {
-                        keyVector.add(new Boolean(false));
-                    }
-                } else {
-                    keyVector.add(new Boolean(false));
-                }
-            } else {
-                keyVector.add(new Boolean(false));
-            }
+			keyVector.add(keyMap != null 
+					&& (keyMap.isEmpty() || keyMap.get(columnName.toUpperCase()) != null)
+					&& typeClass != java.lang.Object.class);
+          
         }
         data.setClmNms(nameVector);
         data.setTypes(typeVector);
@@ -338,25 +325,31 @@ public class DBParser {
                 }
                 if (scheme != null) {
                     HashMap<String,String> extRemarks = getDB2ColumnRemarks(conn, scheme, tableName);
-                    for (int i = 0; i < commentVector.size(); i++) {
-                        if (extRemarks.get(commentVector.get(i)) != null) {
-                            commentVector.set(i, extRemarks.get(commentVector.get(i)));
-                        }
-                    }
+                    setCommentVector(extRemarks, commentVector);
                 }
             } else if (isDB(dbMetaData, "Oracle")) {
                 HashMap<String,String> extRemarks = getOracleColumnRemarks(conn, tableName);
-                for (int i = 0; i < commentVector.size(); i++) {
-                    if (extRemarks.get(commentVector.get(i)) != null) {
-                        commentVector.set(i, extRemarks.get(commentVector.get(i)));
-                    }
-                }
+                setCommentVector(extRemarks, commentVector);
             }
         }
 
         data.addAllRows(getMoreQueryData(rs, limit, keyVector));
 
         return data;
+    }
+    
+    /**
+     * Method to update the comment by remarks
+     * @param extRemarks
+     * @param commentVector
+     */
+    private static void setCommentVector(HashMap<String,String> extRemarks, Vector<String> commentVector){
+    	for (int i = 0, size = commentVector.size(); i < size; i++) {
+			String temp = null;
+            if ((temp = extRemarks.get(commentVector.get(i))) != null) {
+                commentVector.set(i, temp);
+            }
+        }
     }
 
     private static String getDB2CurrentSchema(Connection conn) throws SQLException {
@@ -1186,7 +1179,7 @@ public class DBParser {
                     oraSql = "SELECT " + columnName + " FROM " + tableName + whereClause.toString() + " FOR UPDATE";
                     oraPstmt = conn.prepareStatement(oraSql);
                     oraIndex = 0;
-                    for (int i = 0; i < keyValueVector.size(); i++) {
+                    for (int i = 0, size = keyValueVector.size(); i < size; i++) {
                         setParameter(oraPstmt, ++oraIndex,
                                     keyTypeVector.get(i),
                                     keyValueVector.get(i));
@@ -1219,7 +1212,7 @@ public class DBParser {
             }
 
             // where condition parameter set
-            for (int i = 0; i < keyValueVector.size(); i++) {
+            for (int i = 0,size = keyValueVector.size(); i < size; i++) {
                 setParameter(pstmt, ++index,keyTypeVector.get(i),keyValueVector.get(i));
             }
 
@@ -1293,7 +1286,7 @@ public class DBParser {
         StringBuffer whereClause = new StringBuffer();
         whereClause.append(" WHERE 1 = 1 ");
         Vector<Class<?>> keyTypeVector = new Vector<Class<?>>();
-        for (int i = 0; i < columnNameVector.size(); i++) {
+        for (int i = 0,size = columnNameVector.size(); i < size; i++) {
             if (((Boolean) keyVector.get(i)).booleanValue()) {
                 whereClause.append("AND " + columnNameVector.get(i) + " = ? ");
                 keyTypeVector.add(typeVector.get(i));
@@ -1325,7 +1318,7 @@ public class DBParser {
                     pstmt = new PreparedStatementWrap(conn.prepareStatement(oraSql));
                     int oraIndex = 0;
                     // where condition parameter set
-                    for (int i = 0; i < keyValueVector.size(); i++) {
+                    for (int i = 0, size = keyValueVector.size(); i < size; i++) {
                         setParameter(pstmt, ++oraIndex, keyTypeVector.get(i),
                                 keyValueVector.get(i));
                     }
@@ -1348,7 +1341,7 @@ public class DBParser {
                 int index = 0;
 
                 // where condition parameters set
-                for (int i = 0; i < keyValueVector.size(); i++) {
+                for (int i = 0 ,size = keyValueVector.size(); i < size; i++) {
                     setParameter(pstmt, ++index, keyTypeVector.get(i),
                             keyValueVector.get(i));
                 }
@@ -1405,7 +1398,7 @@ public class DBParser {
         StringBuffer sql = new StringBuffer("INSERT INTO " + tableName + "(");
         Vector<String> insColumns = new Vector<String>();
         Vector<String> insColumnsParam = new Vector<String>();
-        for (int i = 0; i < columnName.size(); i++) {
+        for (int i = 0 ,size = columnName.size(); i < size; i++) {
             if (typeClass.get(i) == Object.class) {
                 continue;
             }
@@ -1423,7 +1416,7 @@ public class DBParser {
         // process parameters set
         PreparedStatement pstmt = new PreparedStatementWrap(conn.prepareStatement(sql.toString()));
         int index = 0;
-        for (int i = 0; i < rowData.size() - 1; i++) {
+        for (int i = 0 , size = rowData.size() - 1; i < size ; i++) {
             if (typeClass.get(i) == Object.class) {
                 continue;
             }
@@ -1463,7 +1456,7 @@ public class DBParser {
         sql.append(" WHERE 1 = 1 ");
 
         int keyIndex = 0;
-        for (int i = 0; i < columnName.size(); i++) {
+        for (int i = 0, size = columnName.size(); i < size; i++) {
             if (((Boolean) keyVector.get(i)).booleanValue()) {
                 Object keyValue = keyValueVector.get(keyIndex++);
                 Class<?> type = typeClass.get(i);
@@ -1491,7 +1484,7 @@ public class DBParser {
 
             int index = 0;
             // where condition parameter set
-            for (int i = 0; i < keyValueVector.size(); i++) {
+            for (int i = 0, size = keyValueVector.size(); i < size; i++) {
                 Object keyValue = keyValueVector.get(i);
                 Class<?> type = keyTypeVector.get(i);
                 if (keyValue != null) {
