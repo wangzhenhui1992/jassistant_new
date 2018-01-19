@@ -37,6 +37,7 @@ public class DBUtil {
 			props.setProperty("remarks", "true");
 			props.setProperty("useInformationSchema", "true");
 			props.setProperty("nullNamePatternMatchesAll", "true");
+			props.setProperty("zeroDateTimeBehavior", "CONVERT_TO_NULL");
 			conn = driver.connect(connectionURL, props);
 
 			return conn;
