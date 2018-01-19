@@ -5,6 +5,8 @@ author   : zhangxj1997  https://github.com/zhangxj1977/jassistant
 
 assitant : wangzhenhui1992 https://github.com/wangzhenhui1992/jassistant
 
+                           http://www.soaringroad.com
+
 company : 
 
 株式会社リーディングソフト http://www.leadingsoft.co.jp/        
