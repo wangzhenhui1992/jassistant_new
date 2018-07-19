@@ -38,6 +38,7 @@ public class DBUtil {
 			props.setProperty("useInformationSchema", "true");
 			props.setProperty("nullNamePatternMatchesAll", "true");
 			props.setProperty("zeroDateTimeBehavior", "CONVERT_TO_NULL");
+	        props.setProperty("allZeroDatetime", "true");
 			conn = driver.connect(connectionURL, props);
 
 			return conn;
